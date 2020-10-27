@@ -130,9 +130,9 @@ export default {
       this.dropdownActive = false
     },
     showRegionLink(regionId) {
-      if (regionId === 'all' && this.currentView === 'energy') {
-        return false
-      }
+      // if (regionId === 'all' && this.currentView === 'energy') {
+      //   return false
+      // }
       return true
     }
   }

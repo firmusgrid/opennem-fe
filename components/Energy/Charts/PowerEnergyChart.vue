@@ -221,7 +221,10 @@ export default {
     },
     chartHeight() {
       let height = 330
-      if (this.regionId === 'nem' && !this.tabletBreak) {
+      if (
+        (this.regionId === 'nem' || this.regionId === 'all') &&
+        !this.tabletBreak
+      ) {
         height = 520
       }
       return height

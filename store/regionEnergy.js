@@ -171,7 +171,9 @@ export const actions = {
     commit('app/showBanner', false, { root: true })
     if (isValidRegion(region)) {
       const env = hostEnv()
-      const urls = Data.getEnergyUrls(region, range, env)
+      // const urls = Data.getEnergyUrls(region, range, env)
+      const r = region === 'all' ? 'nem' : region
+      const urls = Data.getEnergyUrls(r, range, env)
       currentRegion = region
       commit('ready', false)
       commit('isFetching', true)
