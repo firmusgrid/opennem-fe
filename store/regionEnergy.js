@@ -1,5 +1,4 @@
 import _cloneDeep from 'lodash.clonedeep'
-
 import PerfTime from '@/plugins/perfTime.js'
 import { lsGet, lsSet } from '@/services/LocalStorage'
 import hostEnv from '@/services/HostEnv.js'
@@ -289,7 +288,7 @@ export const actions = {
       console.info(`------ ${currentRegion} — ${range}/${interval} (start)`)
       const { currentDataset } = dataRollUp({
         isEnergyType: state.isEnergyType,
-        datasetFlat: _cloneDeep(state.datasetFlat),
+        datasetFlat: _cloneDeep(state.datasetFull),
         domainPowerEnergy: state.domainPowerEnergy,
         domainPowerEnergyGrouped: state.domainPowerEnergyGrouped,
         domainEmissions: state.domainEmissions,
@@ -318,8 +317,11 @@ export const actions = {
     )
   },
 
-  doFilterRegionData({ state, commit }, { range, interval }) {
-    // console.log('****** doFilterRegionData')
+  doUpdateDatasetByFilterPeriod(
+    { state, commit },
+    { range, interval, period }
+  ) {
+    // console.log('****** doUpdateDatasetByFilterPeriod')
     const { currentDataset } = dataRollUp({
       isEnergyType: state.isEnergyType,
       datasetFlat: _cloneDeep(state.datasetFull),
@@ -331,31 +333,6 @@ export const actions = {
       domainMarketValueGrouped: state.domainMarketValueGrouped,
       domainPrice: state.domainPrice,
       domainTemperature: state.domainTemperature,
-      dataPowerEnergyInterval: state.dataPowerEnergyInterval,
-      range,
-      interval
-    })
-
-    commit('currentDataset', currentDataset)
-  },
-
-  doUpdateDatasetByFilterPeriod(
-    { state, commit },
-    { range, interval, period }
-  ) {
-    // console.log('****** doUpdateDatasetByFilterPeriod')
-    const { currentDataset } = dataRollUp({
-      isEnergyType: state.isEnergyType,
-      datasetFlat: _cloneDeep(state.datasetFlat),
-      domainPowerEnergy: state.domainPowerEnergy,
-      domainPowerEnergyGrouped: state.domainPowerEnergyGrouped,
-      domainEmissions: state.domainEmissions,
-      domainEmissionsGrouped: state.domainEmissionsGrouped,
-      domainMarketValue: state.domainMarketValue,
-      domainMarketValueGrouped: state.domainMarketValueGrouped,
-      domainPrice: state.domainPrice,
-      domainTemperature: state.domainTemperature,
-      dataPowerEnergyInterval: state.dataPowerEnergyInterval,
       range,
       interval
     })
@@ -365,5 +342,23 @@ export const actions = {
       period
     })
     commit('currentDataset', filteredDatasetFlat)
+  },
+
+  doUpdateDatasetByFilterRange({ state, commit }, { range, interval }) {
+    const { currentDataset } = dataRollUp({
+      isEnergyType: state.isEnergyType,
+      datasetFlat: _cloneDeep(state.datasetFull),
+      domainPowerEnergy: state.domainPowerEnergy,
+      domainPowerEnergyGrouped: state.domainPowerEnergyGrouped,
+      domainEmissions: state.domainEmissions,
+      domainEmissionsGrouped: state.domainEmissionsGrouped,
+      domainMarketValue: state.domainMarketValue,
+      domainMarketValueGrouped: state.domainMarketValueGrouped,
+      domainPrice: state.domainPrice,
+      domainTemperature: state.domainTemperature,
+      range,
+      interval
+    })
+    commit('currentDataset', currentDataset)
   }
 }
