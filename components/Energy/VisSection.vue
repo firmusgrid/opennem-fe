@@ -31,6 +31,7 @@
       @svgClick="handleSvgClick"
     />
 
+    <h1>meow</h1>
     <emission-intensity-chart 
       v-if="ready && domainEmissions.length > 0 && featureEmissions"
       :hover-on="isHovering"

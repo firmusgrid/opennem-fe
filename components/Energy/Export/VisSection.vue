@@ -29,7 +29,7 @@
       :read-only="true"
       :zoom-extent="filteredDates"
     />
-
+    
   </section>
 </template>
 

@@ -8,6 +8,7 @@
       :hidden-fuel-techs="hiddenFuelTechs"
 
       -->
+
     <summary-table
       :energy-domains="powerEnergyDomains"
       :temperature-domains="domainTemperature"
