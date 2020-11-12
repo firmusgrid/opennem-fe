@@ -31,7 +31,8 @@
       @svgClick="handleSvgClick"
     />
 
-    <h1>meow</h1>
+    <h1>firmus</h1>
+
     <emission-intensity-chart 
       v-if="ready && domainEmissions.length > 0 && featureEmissions"
       :hover-on="isHovering"
@@ -52,6 +53,16 @@
       @zoomExtent="handleZoomExtent"
       @svgClick="handleSvgClick" />
     
+    <temperature-chart 
+      v-if="ready && domainTemperature.length > 0"
+      :hover-on="isHovering"
+      :hover-date="hoverDate"
+      :zoom-extent="zoomExtent"
+      @dateHover="handleDateHover"
+      @isHovering="handleIsHovering"
+      @zoomExtent="handleZoomExtent"
+      @svgClick="handleSvgClick" />
+
     <temperature-chart 
       v-if="ready && domainTemperature.length > 0"
       :hover-on="isHovering"
