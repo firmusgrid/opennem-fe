@@ -50,6 +50,10 @@ export default {
         break
       default:
     }
+
+    // Firmus
+    // urls.push('http://localhost:5000/powerconsumption/average')
+
     return urls
   },
 

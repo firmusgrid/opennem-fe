@@ -53,15 +53,19 @@
       @zoomExtent="handleZoomExtent"
       @svgClick="handleSvgClick" />
     
-    <temperature-chart 
-      v-if="ready && domainTemperature.length > 0"
+    <!-- <h1>Firmus chart</h1>
+    <power-energy-chart
+      v-if="ready"
       :hover-on="isHovering"
       :hover-date="hoverDate"
       :zoom-extent="zoomExtent"
       @dateHover="handleDateHover"
       @isHovering="handleIsHovering"
       @zoomExtent="handleZoomExtent"
-      @svgClick="handleSvgClick" />
+      @svgClick="handleSvgClick"
+      @selectedDataset="ds => selectedDataset = ds"
+      @displayUnit="unit => selectedUnit = unit"
+    /> -->
 
     <temperature-chart 
       v-if="ready && domainTemperature.length > 0"
@@ -147,7 +151,7 @@ export default {
       domainPrice: 'regionEnergy/domainPrice',
       currentDomainPowerEnergy: 'regionEnergy/currentDomainPowerEnergy',
 
-      featureEmissions: 'feature/emissions'
+      featureEmissions: 'feature/emissions' //Firmus
     }),
     domains() {
       return _cloneDeep(this.currentDomainPowerEnergy).reverse()

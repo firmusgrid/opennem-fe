@@ -65,8 +65,7 @@ export default {
       showChartEmissionIntensity: 'chartOptionsEmissionIntensity/chartShown',
       showChartPrice: 'chartOptionsPrice/chartShown',
       showChartTemperature: 'chartOptionsTemperature/chartShown',
-
-      featureEmissions: 'feature/emissions'
+      featureEmissions: 'feature/emissions' //Firmus
     }),
     domains() {
       return _cloneDeep(this.currentDomainPowerEnergy).reverse()
